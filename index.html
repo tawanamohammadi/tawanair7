@@ -3,125 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>توانا محمدی | AI & Programming</title>
+    <title>توانا محمدی | توسعه‌دهنده هوش مصنوعی</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 </head>
 <body>
+    <!-- منوی ناوبری -->
     <nav class="navbar">
-        <div class="container">
-            <a href="/" class="logo">TM</a>
-            <ul class="nav-menu">
-                <li><a href="#home">خانه</a></li>
-                <li><a href="#articles">مقالات</a></li>
-                <li><a href="#projects">پروژه‌ها</a></li>
-                <li><a href="#about">درباره من</a></li>
-            </ul>
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">TM</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">خانه</a>
+                <a href="#blog" class="nav-link">بلاگ</a>
+                <a href="#projects" class="nav-link">پروژه‌ها</a>
+                <a href="#about" class="nav-link">درباره من</a>
+                <a href="#contact" class="nav-link contact-btn">تماس</a>
+            </div>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>توانا محمدی</h1>
-                <p class="subtitle">توسعه‌دهنده هوش مصنوعی و نرم‌افزار</p>
-                <div class="cta-buttons">
-                    <a href="#articles" class="btn primary">مطالعه مقالات</a>
-                    <a href="#projects" class="btn secondary">مشاهده پروژه‌ها</a>
+    <!-- بخش قهرمان -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="hero-title">
+                    <span class="gradient-text">هوش مصنوعی</span>
+                    <span class="highlight">و برنامه‌نویسی</span>
+                </h1>
+                <p class="hero-subtitle">توسعه راهکارهای هوشمند برای آینده</p>
+                <div class="hero-buttons">
+                    <a href="#blog" class="primary-btn">مشاهده مقالات</a>
+                    <a href="#projects" class="secondary-btn">نمونه کارها</a>
                 </div>
+            </div>
+            <div class="hero-image" data-aos="fade-left">
+                <div class="pattern-bg"></div>
+                <img src="ai-illustration.svg" alt="AI Illustration">
             </div>
         </div>
-    </header>
+    </section>
 
-    <main>
-        <section id="articles" class="section">
-            <div class="container">
-                <h2 class="section-title">آخرین مقالات</h2>
-                <div class="articles-grid">
-                    <article class="article-card">
-                        <div class="article-image">
-                            <img src="https://via.placeholder.com/600x400" alt="Deep Learning">
-                            <span class="tag">Deep Learning</span>
+    <!-- بخش مقالات -->
+    <section id="blog" class="blog-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">آخرین مقالات</h2>
+            <div class="blog-grid">
+                <article class="blog-card" data-aos="fade-up">
+                    <div class="card-image">
+                        <img src="deep-learning.jpg" alt="Deep Learning">
+                        <div class="card-category">Deep Learning</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>معماری‌های نوین در یادگیری عمیق</h3>
+                        <p>بررسی جامع آخرین پیشرفت‌های یادگیری عمیق و کاربردهای آن در صنعت...</p>
+                        <div class="card-footer">
+                            <span class="read-time">۱۲ دقیقه مطالعه</span>
+                            <a href="#" class="read-more">ادامه مطلب</a>
                         </div>
-                        <div class="article-content">
-                            <h3>کاربرد یادگیری عمیق در پردازش تصویر</h3>
-                            <p>بررسی جامع روش‌های مدرن یادگیری عمیق در پردازش تصاویر و کاربردهای عملی آن...</p>
-                            <div class="article-meta">
-                                <span>۱۵ دقیقه مطالعه</span>
-                                <a href="#" class="read-more">ادامه مطلب</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="article-card">
-                        <div class="article-image">
-                            <img src="https://via.placeholder.com/600x400" alt="Machine Learning">
-                            <span class="tag">Machine Learning</span>
-                        </div>
-                        <div class="article-content">
-                            <h3>مقدمه‌ای بر یادگیری تقویتی</h3>
-                            <p>آشنایی با مفاهیم پایه یادگیری تقویتی و کاربرد آن در هوش مصنوعی مدرن...</p>
-                            <div class="article-meta">
-                                <span>۱۰ دقیقه مطالعه</span>
-                                <a href="#" class="read-more">ادامه مطلب</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
+                    </div>
+                </article>
+                <!-- کارت‌های مشابه برای مقالات دیگر -->
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects" class="section gray">
-            <div class="container">
-                <h2 class="section-title">پروژه‌های منتخب</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <h3>سیستم تشخیص چهره</h3>
-                        <p>پیاده‌سازی یک سیستم تشخیص چهره با استفاده از یادگیری عمیق</p>
+    <!-- بخش پروژه‌ها -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">پروژه‌های برجسته</h2>
+            <div class="projects-showcase">
+                <div class="project-card large" data-aos="fade-right">
+                    <div class="project-content">
+                        <h3>سیستم تشخیص چهره هوشمند</h3>
+                        <p>پیاده‌سازی یک سیستم پیشرفته تشخیص چهره با استفاده از شبکه‌های عصبی عمیق</p>
                         <div class="tech-stack">
-                            <span>Python</span>
                             <span>TensorFlow</span>
+                            <span>Python</span>
                             <span>OpenCV</span>
                         </div>
-                        <a href="#" class="project-link">
-                            مشاهده در گیت‌هاب
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 18l6-6-6-6"/>
-                            </svg>
-                        </a>
+                        <a href="#" class="project-link">مشاهده پروژه</a>
                     </div>
-
-                    <div class="project-card">
-                        <h3>پردازش زبان طبیعی</h3>
-                        <p>توسعه یک سیستم پردازش زبان طبیعی برای تحلیل متون فارسی</p>
-                        <div class="tech-stack">
-                            <span>Python</span>
-                            <span>NLTK</span>
-                            <span>Transformer</span>
-                        </div>
-                        <a href="#" class="project-link">
-                            مشاهده در گیت‌هاب
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 18l6-6-6-6"/>
-                            </svg>
-                        </a>
+                    <div class="project-preview">
+                        <img src="face-recognition.jpg" alt="Face Recognition">
                     </div>
                 </div>
+                <!-- کارت‌های مشابه برای پروژه‌های دیگر -->
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- فوتر -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="social-links">
-                    <a href="https://github.com/tawanamohammadi" target="_blank">GitHub</a>
-                    <a href="#" target="_blank">LinkedIn</a>
-                    <a href="#" target="_blank">Twitter</a>
+                <div class="footer-left">
+                    <div class="footer-logo">TM</div>
+                    <p>توسعه‌دهنده هوش مصنوعی و برنامه‌نویس</p>
                 </div>
-                <p class="copyright">© ۱۴۰۳ توانا محمدی. تمامی حقوق محفوظ است.</p>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>لینک‌های سریع</h4>
+                        <a href="#home">خانه</a>
+                        <a href="#blog">بلاگ</a>
+                        <a href="#projects">پروژه‌ها</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>ارتباط با من</h4>
+                        <a href="mailto:contact@example.com">ایمیل</a>
+                        <a href="https://github.com/tawanamohammadi">گیت‌هاب</a>
+                        <a href="#linkedin">لینکدین</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© ۱۴۰۳ تمامی حقوق محفوظ است.</p>
             </div>
         </div>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: true
+        });
+    </script>
 </body>
 </html>
