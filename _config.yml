@@ -1,3 +1,32 @@
-title: "وبلاگ من"
-description: "یک بلاگ ساده با Jekyll"
-theme: minima
+# تنظیمات اصلی
+title: "HackerSpace"
+description: "وبلاگ شخصی تخصصی برنامه‌نویسی"
+baseurl: ""
+url: "https://tawanamohammadi.github.io"
+locale: "fa_IR"
+direction: rtl
+
+# تنظیمات نویسنده
+author:
+  name: "Tawana Mohammadi"
+  bio: "برنامه‌نویس و توسعه‌دهنده وب"
+  location: "Iran"
+  github: tawanamohammadi
+  email: your-email@domain.com
+
+# تنظیمات ظاهری
+theme_settings:
+  # رنگ‌های اصلی
+  primary_color: "#00ff00"      # سبز نئون
+  secondary_color: "#0a192f"    # آبی تیره
+  background_color: "#0a0a0a"   # مشکی مات
+  text_color: "#ffffff"         # سفید
+  
+  # فونت‌ها
+  heading_font: "Vazirmatn"
+  body_font: "Vazirmatn"
+  code_font: "Fira Code"
+
+# تنظیمات بلاگ
+paginate: 10
+permalink: /:title/

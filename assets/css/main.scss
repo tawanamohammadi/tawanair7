@@ -1,0 +1,89 @@
+---
+---
+
+// متغیرهای اصلی
+$primary-color: {{ site.theme_settings.primary_color }};
+$secondary-color: {{ site.theme_settings.secondary_color }};
+$background-color: {{ site.theme_settings.background_color }};
+$text-color: {{ site.theme_settings.text_color }};
+
+// ریست استایل‌ها
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  direction: rtl;
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: {{ site.theme_settings.body_font }}, sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  line-height: 1.6;
+}
+
+// هدر سایت
+.site-header {
+  background: $secondary-color;
+  padding: 1rem 0;
+  border-bottom: 2px solid $primary-color;
+  
+  .terminal-prompt {
+    &::before {
+      content: ">";
+      color: $primary-color;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+// محتوای اصلی
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  
+  article {
+    margin-bottom: 3rem;
+    padding: 1rem;
+    border: 1px solid rgba($primary-color, 0.2);
+    border-radius: 4px;
+    
+    &:hover {
+      border-color: $primary-color;
+      transform: translateY(-2px);
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+// کد بلاک‌ها
+pre {
+  background: darken($background-color, 5%);
+  padding: 1rem;
+  border-radius: 4px;
+  border-left: 4px solid $primary-color;
+  font-family: {{ site.theme_settings.code_font }}, monospace;
+  overflow-x: auto;
+}
+
+// انیمیشن‌های سفارشی
+@keyframes cursor-blink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background: $primary-color;
+  margin-left: 5px;
+  animation: cursor-blink 1s infinite;
+}
