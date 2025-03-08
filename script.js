@@ -1,255 +1,358 @@
-// Initialize AOS
-AOS.init({
-    duration: 800,
-    easing: 'ease-out',
-    once: true
+// Initialize AOS (Animate On Scroll)
+document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({
+        duration: 800,
+        easing: 'ease-out',
+        once: true,
+        offset: 100
+    });
 });
 
-// Neural Network Background
-const createNeuralNetwork = () => {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    document.getElementById('neural-network-bg').appendChild(canvas);
+// Global Variables
+const config = {
+    particleColor: '#00f7ff',
+    particleCount: 100,
+    connectionDistance: 100,
+    matrixSpeed: 30,
+    typingSpeed: 100
+};
 
-    const particles = [];
-    const particleCount = 100;
-    const connectionDistance = 100;
+// Utility Functions
+const getRandomNumber = (min, max) => Math.random() * (max - min) + min;
+const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.vx = (Math.random() - 0.5) * 2;
-            this.vy = (Math.random() - 0.5) * 2;
-            this.radius = Math.random() * 2;
-        }
+// Neural Network Background Animation
+class NeuralNetworkAnimation {
+    constructor() {
+        this.canvas = document.createElement('canvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.particles = [];
+        this.init();
+    }
 
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
+    init() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        document.getElementById('neural-network-bg').appendChild(this.canvas);
+        this.createParticles();
+        this.animate();
+    }
 
-            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-        }
-
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = '#00f7ff';
-            ctx.fill();
-            ctx.closePath();
+    createParticles() {
+        for (let i = 0; i < config.particleCount; i++) {
+            this.particles.push({
+                x: Math.random() * this.canvas.width,
+                y: Math.random() * this.canvas.height,
+                vx: (Math.random() - 0.5) * 2,
+                vy: (Math.random() - 0.5) * 2,
+                radius: Math.random() * 2
+            });
         }
     }
 
-    // Create particles
-    for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
+    drawParticle(particle) {
+        this.ctx.beginPath();
+        this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        this.ctx.fillStyle = config.particleColor;
+        this.ctx.fill();
+        this.ctx.closePath();
     }
 
-    // Animation loop
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        particles.forEach(particle => {
-            particle.update();
-            particle.draw();
-
-            // Draw connections
-            particles.forEach(otherParticle => {
-                const dx = particle.x - otherParticle.x;
-                const dy = particle.y - otherParticle.y;
+    drawConnections() {
+        for (let i = 0; i < this.particles.length; i++) {
+            for (let j = i + 1; j < this.particles.length; j++) {
+                const dx = this.particles[i].x - this.particles[j].x;
+                const dy = this.particles[i].y - this.particles[j].y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
 
-                if (distance < connectionDistance) {
-                    ctx.beginPath();
-                    ctx.strokeStyle = `rgba(0, 247, 255, ${1 - distance/connectionDistance})`;
-                    ctx.lineWidth = 0.5;
-                    ctx.moveTo(particle.x, particle.y);
-                    ctx.lineTo(otherParticle.x, otherParticle.y);
-                    ctx.stroke();
-                    ctx.closePath();
+                if (distance < config.connectionDistance) {
+                    this.ctx.beginPath();
+                    this.ctx.strokeStyle = `rgba(0, 247, 255, ${1 - distance/config.connectionDistance})`;
+                    this.ctx.lineWidth = 0.5;
+                    this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
+                    this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
+                    this.ctx.stroke();
+                }
+            }
+        }
+    }
+
+    updateParticles() {
+        this.particles.forEach(particle => {
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+
+            // Bounce off edges
+            if (particle.x < 0 || particle.x > this.canvas.width) particle.vx *= -1;
+            if (particle.y < 0 || particle.y > this.canvas.height) particle.vy *= -1;
+        });
+    }
+
+    animate = () => {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.updateParticles();
+        this.drawConnections();
+        this.particles.forEach(particle => this.drawParticle(particle));
+        requestAnimationFrame(this.animate);
+    }
+
+    resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.particles = [];
+        this.createParticles();
+    }
+}
+
+// Matrix Rain Animation
+class MatrixRain {
+    constructor() {
+        this.canvas = document.createElement('canvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.init();
+    }
+
+    init() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        document.querySelector('.matrix-rain').appendChild(this.canvas);
+        
+        this.characters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        this.fontSize = 16;
+        this.columns = this.canvas.width/this.fontSize;
+        this.drops = [];
+
+        for (let i = 0; i < this.columns; i++) {
+            this.drops[i] = 1;
+        }
+
+        this.startAnimation();
+    }
+
+    draw() {
+        this.ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.ctx.fillStyle = '#0F0';
+        this.ctx.font = `${this.fontSize}px monospace`;
+
+        for (let i = 0; i < this.drops.length; i++) {
+            const char = this.characters[Math.floor(Math.random() * this.characters.length)];
+            this.ctx.fillText(char, i * this.fontSize, this.drops[i] * this.fontSize);
+
+            if (this.drops[i] * this.fontSize > this.canvas.height && Math.random() > 0.975) {
+                this.drops[i] = 0;
+            }
+            this.drops[i]++;
+        }
+    }
+
+    startAnimation() {
+        setInterval(() => this.draw(), config.matrixSpeed);
+    }
+
+    resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        this.columns = this.canvas.width/this.fontSize;
+        this.drops = [];
+        for (let i = 0; i < this.columns; i++) {
+            this.drops[i] = 1;
+        }
+    }
+}
+
+// Typewriter Effect
+class TypewriterEffect {
+    constructor(element, text, delay = config.typingSpeed) {
+        this.element = element;
+        this.text = text;
+        this.delay = delay;
+        this.currentChar = 0;
+        this.start();
+    }
+
+    type() {
+        if (this.currentChar < this.text.length) {
+            this.element.textContent += this.text.charAt(this.currentChar);
+            this.currentChar++;
+            setTimeout(() => this.type(), this.delay);
+        }
+    }
+
+    start() {
+        this.element.textContent = '';
+        setTimeout(() => this.type(), 500);
+    }
+}
+
+// Navigation and Scroll Handling
+class Navigation {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.setupSmoothScroll();
+        this.setupNavHighlight();
+        this.setupNavbarScroll();
+    }
+
+    setupSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
-
-        requestAnimationFrame(animate);
     }
 
-    animate();
-};
+    setupNavHighlight() {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
 
-// Matrix Rain Effect
-const createMatrixRain = () => {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    document.querySelector('.matrix-rain').appendChild(canvas);
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
 
-    const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
-    const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const nums = '0123456789';
-    const alphabet = katakana + latin + nums;
-
-    const fontSize = 16;
-    const columns = canvas.width/fontSize;
-
-    const rainDrops = [];
-
-    for( let x = 0; x < columns; x++ ) {
-        rainDrops[x] = 1;
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
     }
 
-    const draw = () => {
-        ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    setupNavbarScroll() {
+        const navbar = document.querySelector('.navbar');
+        let lastScroll = 0;
 
-        ctx.fillStyle = '#0F0';
-        ctx.font = fontSize + 'px monospace';
-
-        for(let i = 0; i < rainDrops.length; i++) {
-            const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-            ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-
-            if(rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                rainDrops[i] = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                navbar.classList.add('navbar-hidden');
+            } else {
+                navbar.classList.remove('navbar-hidden');
             }
-            rainDrops[i]++;
-        }
-    };
-
-    setInterval(draw, 30);
-};
-
-// Typewriter Effect
-const createTypewriter = () => {
-    const text = document.querySelector('.hero-subtitle');
-    const strText = text.textContent;
-    text.textContent = '';
-
-    const splitText = strText.split('');
-    let charIndex = 0;
-
-    const typeEffect = () => {
-        if(charIndex < splitText.length) {
-            text.textContent += splitText[charIndex];
-            charIndex++;
-            setTimeout(typeEffect, 100);
-        }
-    };
-
-    setTimeout(typeEffect, 500);
-};
-
-// Circular Menu Animation
-const initializeCircularMenu = () => {
-    const menuItems = document.querySelectorAll('.nav-link');
-    menuItems.forEach((item, index) => {
-        item.style.setProperty('--item-number', index);
-    });
-};
-
-// Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+            
+            lastScroll = currentScroll;
         });
-    });
-});
+    }
+}
 
-// Active Nav Link
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('.nav-link');
+// Footer Particles Animation
+class FooterParticles {
+    constructor() {
+        this.canvas = document.createElement('canvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.particles = [];
+        this.init();
+    }
 
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if(scrollY >= (sectionTop - sectionHeight/3)) {
-            current = section.getAttribute('id');
-        }
-    });
+    init() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = 400;
+        document.querySelector('.footer-particles').appendChild(this.canvas);
+        this.createParticles();
+        this.animate();
+    }
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if(link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// Footer Particles
-const createFooterParticles = () => {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = 400;
-    document.querySelector('.footer-particles').appendChild(canvas);
-
-    const particles = [];
-    const particleCount = 50;
-
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 2;
-            this.speedX = (Math.random() - 0.5) * 0.5;
-            this.speedY = (Math.random() - 0.5) * 0.5;
-        }
-
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-
-            if(this.x > canvas.width) this.x = 0;
-            else if(this.x < 0) this.x = canvas.width;
-            if(this.y > canvas.height) this.y = 0;
-            else if(this.y < 0) this.y = canvas.height;
-        }
-
-        draw() {
-            ctx.fillStyle = 'rgba(0, 247, 255, 0.5)';
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
+    createParticles() {
+        for (let i = 0; i < 50; i++) {
+            this.particles.push({
+                x: Math.random() * this.canvas.width,
+                y: Math.random() * this.canvas.height,
+                size: Math.random() * 2,
+                speedX: (Math.random() - 0.5) * 0.5,
+                speedY: (Math.random() - 0.5) * 0.5
+            });
         }
     }
 
-    // Create particles
-    for(let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-    }
+    update() {
+        this.particles.forEach(particle => {
+            particle.x += particle.speedX;
+            particle.y += particle.speedY;
 
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(particle => {
-            particle.update();
-            particle.draw();
+            if (particle.x > this.canvas.width) particle.x = 0;
+            else if (particle.x < 0) particle.x = this.canvas.width;
+            if (particle.y > this.canvas.height) particle.y = 0;
+            else if (particle.y < 0) particle.y = this.canvas.height;
         });
-        requestAnimationFrame(animate);
     }
 
-    animate();
-};
+    draw() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.particles.forEach(particle => {
+            this.ctx.fillStyle = 'rgba(0, 247, 255, 0.5)';
+            this.ctx.beginPath();
+            this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+            this.ctx.fill();
+        });
+    }
 
-// Initialize everything when DOM is loaded
+    animate = () => {
+        this.update();
+        this.draw();
+        requestAnimationFrame(this.animate);
+    }
+
+    resize() {
+        this.canvas.width = window.innerWidth;
+        this.particles = [];
+        this.createParticles();
+    }
+}
+
+// Initialize Everything
+let neuralNetwork, matrixRain, navigation, footerParticles;
+
 document.addEventListener('DOMContentLoaded', () => {
-    createNeuralNetwork();
-    createMatrixRain();
-    createTypewriter();
-    initializeCircularMenu();
-    createFooterParticles();
+    // Initialize all animations and features
+    neuralNetwork = new NeuralNetworkAnimation();
+    matrixRain = new MatrixRain();
+    navigation = new Navigation();
+    footerParticles = new FooterParticles();
+
+    // Initialize typewriter effects
+    const subtitleElement = document.querySelector('.hero-subtitle');
+    if (subtitleElement) {
+        new TypewriterEffect(subtitleElement, subtitleElement.textContent);
+    }
 });
 
 // Handle window resize
 window.addEventListener('resize', () => {
-    createNeuralNetwork();
-    createMatrixRain();
-    createFooterParticles();
+    neuralNetwork?.resize();
+    matrixRain?.resize();
+    footerParticles?.resize();
+});
+
+// Handle visibility change for performance
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        // Pause heavy animations
+    } else {
+        // Resume animations
+    }
 });
