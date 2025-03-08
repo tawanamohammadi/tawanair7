@@ -3,24 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>توانا محمدی | توسعه‌دهنده هوش مصنوعی</title>
-    <link rel="stylesheet" href="style.css">
+    <title>توانا محمدی | هوش مصنوعی و برنامه‌نویسی</title>
+    
+    <!-- فونت‌ها و آیکون‌ها -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- کتابخانه‌های انیمیشن -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Three.js برای افکت‌های 3D -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- GSAP برای انیمیشن‌های پیشرفته -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- منوی ناوبری -->
+    <!-- Neural Network Background -->
+    <div id="neural-network-bg"></div>
+
+    <!-- نوار ناوبری -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <span class="logo-text">TM</span>
+                <div class="logo-animation">
+                    <span class="circuit-text">TM</span>
+                    <div class="circuit-lines"></div>
+                </div>
             </div>
             <div class="nav-links">
-                <a href="#home" class="nav-link active">خانه</a>
-                <a href="#blog" class="nav-link">بلاگ</a>
-                <a href="#projects" class="nav-link">پروژه‌ها</a>
-                <a href="#about" class="nav-link">درباره من</a>
-                <a href="#contact" class="nav-link contact-btn">تماس</a>
+                <a href="#home" class="nav-link active">
+                    <span class="link-icon"><i class="fas fa-home"></i></span>
+                    <span class="link-text">خانه</span>
+                </a>
+                <a href="#expertise" class="nav-link">
+                    <span class="link-icon"><i class="fas fa-brain"></i></span>
+                    <span class="link-text">تخصص‌ها</span>
+                </a>
+                <a href="#projects" class="nav-link">
+                    <span class="link-icon"><i class="fas fa-project-diagram"></i></span>
+                    <span class="link-text">پروژه‌ها</span>
+                </a>
+                <a href="#blog" class="nav-link">
+                    <span class="link-icon"><i class="fas fa-newspaper"></i></span>
+                    <span class="link-text">مقالات</span>
+                </a>
+                <a href="#contact" class="nav-link contact-btn">
+                    <span class="btn-text">تماس با من</span>
+                    <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                </a>
             </div>
         </div>
     </nav>
@@ -29,108 +63,124 @@
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content" data-aos="fade-up">
-                <h1 class="hero-title">
-                    <span class="gradient-text">هوش مصنوعی</span>
-                    <span class="highlight">و برنامه‌نویسی</span>
-                </h1>
-                <p class="hero-subtitle">توسعه راهکارهای هوشمند برای آینده</p>
+                <div class="digital-text">
+                    <h1 class="glitch-text">
+                        <span aria-hidden="true">توسعه هوش مصنوعی</span>
+                        توسعه هوش مصنوعی
+                        <span aria-hidden="true">توسعه هوش مصنوعی</span>
+                    </h1>
+                </div>
+                <p class="hero-subtitle typewriter">
+                    طراحی و پیاده‌سازی راهکارهای هوشمند برای آینده
+                </p>
+                <div class="tech-stack-display">
+                    <div class="tech-item">
+                        <i class="fab fa-python"></i>
+                        <span>Python</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-brain"></i>
+                        <span>Deep Learning</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-robot"></i>
+                        <span>Machine Learning</span>
+                    </div>
+                </div>
                 <div class="hero-buttons">
-                    <a href="#blog" class="primary-btn">مشاهده مقالات</a>
-                    <a href="#projects" class="secondary-btn">نمونه کارها</a>
+                    <a href="#projects" class="cyber-btn">
+                        <span class="cyber-btn__glitch">مشاهده پروژه‌ها</span>
+                        <span class="cyber-btn__tag">R25</span>
+                    </a>
+                    <a href="#contact" class="cyber-btn cyber-btn--secondary">
+                        <span class="cyber-btn__glitch">ارتباط با من</span>
+                        <span class="cyber-btn__tag">C12</span>
+                    </a>
                 </div>
             </div>
-            <div class="hero-image" data-aos="fade-left">
-                <div class="pattern-bg"></div>
-                <img src="ai-illustration.svg" alt="AI Illustration">
+            <div class="hero-visual">
+                <div class="matrix-rain"></div>
+                <div class="floating-particles"></div>
             </div>
         </div>
     </section>
 
-    <!-- بخش مقالات -->
-    <section id="blog" class="blog-section">
+    <!-- بخش تخصص‌ها -->
+    <section id="expertise" class="expertise-section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">آخرین مقالات</h2>
-            <div class="blog-grid">
-                <article class="blog-card" data-aos="fade-up">
-                    <div class="card-image">
-                        <img src="deep-learning.jpg" alt="Deep Learning">
-                        <div class="card-category">Deep Learning</div>
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="tech-border">تخصص‌های من</span>
+            </h2>
+            <div class="expertise-grid">
+                <div class="expertise-card" data-aos="zoom-in">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
                     </div>
-                    <div class="card-content">
-                        <h3>معماری‌های نوین در یادگیری عمیق</h3>
-                        <p>بررسی جامع آخرین پیشرفت‌های یادگیری عمیق و کاربردهای آن در صنعت...</p>
-                        <div class="card-footer">
-                            <span class="read-time">۱۲ دقیقه مطالعه</span>
-                            <a href="#" class="read-more">ادامه مطلب</a>
-                        </div>
-                    </div>
-                </article>
-                <!-- کارت‌های مشابه برای مقالات دیگر -->
-            </div>
-        </div>
-    </section>
-
-    <!-- بخش پروژه‌ها -->
-    <section id="projects" class="projects-section">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">پروژه‌های برجسته</h2>
-            <div class="projects-showcase">
-                <div class="project-card large" data-aos="fade-right">
-                    <div class="project-content">
-                        <h3>سیستم تشخیص چهره هوشمند</h3>
-                        <p>پیاده‌سازی یک سیستم پیشرفته تشخیص چهره با استفاده از شبکه‌های عصبی عمیق</p>
-                        <div class="tech-stack">
-                            <span>TensorFlow</span>
-                            <span>Python</span>
-                            <span>OpenCV</span>
-                        </div>
-                        <a href="#" class="project-link">مشاهده پروژه</a>
-                    </div>
-                    <div class="project-preview">
-                        <img src="face-recognition.jpg" alt="Face Recognition">
+                    <h3>هوش مصنوعی</h3>
+                    <p>طراحی و پیاده‌سازی سیستم‌های یادگیری عمیق و پردازش تصویر</p>
+                    <div class="tech-tags">
+                        <span>TensorFlow</span>
+                        <span>PyTorch</span>
+                        <span>OpenCV</span>
                     </div>
                 </div>
-                <!-- کارت‌های مشابه برای پروژه‌های دیگر -->
+                <!-- کارت‌های مشابه برای سایر تخصص‌ها -->
             </div>
         </div>
     </section>
 
-    <!-- فوتر -->
+    <!-- فوتر پیشرفته -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <div class="footer-logo">TM</div>
-                    <p>توسعه‌دهنده هوش مصنوعی و برنامه‌نویس</p>
+        <div class="footer-particles"></div>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <div class="circuit-text">TM</div>
+                        <div class="circuit-lines"></div>
+                    </div>
+                    <p>توسعه‌دهنده هوش مصنوعی و متخصص یادگیری ماشین</p>
                 </div>
                 <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>لینک‌های سریع</h4>
-                        <a href="#home">خانه</a>
-                        <a href="#blog">بلاگ</a>
-                        <a href="#projects">پروژه‌ها</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>ارتباط با من</h4>
-                        <a href="mailto:contact@example.com">ایمیل</a>
-                        <a href="https://github.com/tawanamohammadi">گیت‌هاب</a>
-                        <a href="#linkedin">لینکدین</a>
+                    <h3>دسترسی سریع</h3>
+                    <ul>
+                        <li><a href="#home">خانه</a></li>
+                        <li><a href="#projects">پروژه‌ها</a></li>
+                        <li><a href="#blog">مقالات</a></li>
+                        <li><a href="#contact">تماس</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>شبکه‌های اجتماعی</h3>
+                    <div class="social-icons">
+                        <a href="https://github.com/tawanamohammadi" class="social-icon github" target="_blank">
+                            <i class="fab fa-github"></i>
+                            <span class="tooltip">GitHub</span>
+                        </a>
+                        <a href="#" class="social-icon linkedin" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                            <span class="tooltip">LinkedIn</span>
+                        </a>
+                        <a href="#" class="social-icon twitter" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                            <span class="tooltip">Twitter</span>
+                        </a>
+                        <a href="#" class="social-icon telegram" target="_blank">
+                            <i class="fab fa-telegram"></i>
+                            <span class="tooltip">Telegram</span>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© ۱۴۰۳ تمامی حقوق محفوظ است.</p>
+                <div class="copyright">
+                    <p>© ۱۴۰۳ تمامی حقوق محفوظ است</p>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            easing: 'ease-out',
-            once: true
-        });
-    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
