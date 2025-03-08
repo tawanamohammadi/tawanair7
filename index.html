@@ -1,32 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ site.title }}</title>
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <title>وبلاگ تخصصی هوش مصنوعی و برنامه‌نویسی</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- فونت وزیر برای متون فارسی -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <header>
-        <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
-        <nav>
-            <ul>
-                <li><a href="{{ site.baseurl }}/">Home</a></li>
-                <li><a href="{{ site.baseurl }}/about">About</a></li>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">توانا محمدی</div>
+            <ul class="nav-links">
+                <li><a href="#home">خانه</a></li>
+                <li><a href="#blog">مقالات</a></li>
+                <li><a href="#projects">پروژه‌ها</a></li>
+                <li><a href="#about">درباره من</a></li>
             </ul>
-        </nav>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>دنیای هوش مصنوعی و برنامه‌نویسی</h1>
+            <p>آخرین مطالب و تجربیات در حوزه هوش مصنوعی و توسعه نرم‌افزار</p>
+        </div>
     </header>
-    <main>
-        {% for post in site.posts %}
-            <article>
-                <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-                <p>{{ post.excerpt }}</p>
-                <a href="{{ post.url | relative_url }}">Read more</a>
-            </article>
-        {% endfor %}
+
+    <main class="container">
+        <section class="featured-posts">
+            <h2>آخرین مقالات</h2>
+            <div class="post-grid">
+                <article class="post-card">
+                    <div class="post-image">
+                        <img src="https://via.placeholder.com/350x200" alt="AI Article">
+                    </div>
+                    <div class="post-content">
+                        <h3>مقدمه‌ای بر یادگیری عمیق</h3>
+                        <p>در این مقاله به بررسی مفاهیم پایه یادگیری عمیق و کاربردهای آن می‌پردازیم...</p>
+                        <div class="post-meta">
+                            <span class="date">۱۷ اسفند ۱۴۰۳</span>
+                            <span class="read-time">۵ دقیقه مطالعه</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-image">
+                        <img src="https://via.placeholder.com/350x200" alt="Programming Article">
+                    </div>
+                    <div class="post-content">
+                        <h3>بهینه‌سازی کد در پایتون</h3>
+                        <p>تکنیک‌های پیشرفته برای بهبود عملکرد کد پایتون در پروژه‌های بزرگ...</p>
+                        <div class="post-meta">
+                            <span class="date">۱۵ اسفند ۱۴۰۳</span>
+                            <span class="read-time">۸ دقیقه مطالعه</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="projects">
+            <h2>پروژه‌های اخیر</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>پروژه تشخیص چهره</h3>
+                    <p>پیاده‌سازی سیستم تشخیص چهره با استفاده از یادگیری عمیق</p>
+                    <div class="tech-stack">
+                        <span>Python</span>
+                        <span>TensorFlow</span>
+                        <span>OpenCV</span>
+                    </div>
+                    <a href="#" class="project-link">مشاهده در گیت‌هاب</a>
+                </div>
+                
+                <div class="project-card">
+                    <h3>وب اپلیکیشن هوشمند</h3>
+                    <p>توسعه یک وب اپلیکیشن با قابلیت‌های هوش مصنوعی</p>
+                    <div class="tech-stack">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                    <a href="#" class="project-link">مشاهده در گیت‌هاب</a>
+                </div>
+            </div>
+        </section>
     </main>
+
     <footer>
-        <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://github.com/tawanamohammadi" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                    <a href="#" target="_blank">Twitter</a>
+                </div>
+                <p class="copyright">© ۱۴۰۳ توانا محمدی. تمامی حقوق محفوظ است.</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
