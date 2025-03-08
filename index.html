@@ -1,6 +1,32 @@
----
-layout: home
-title: "صفحه اصلی"
----
-
-به وبلاگ من خوش آمدید! 🎉 این اولین پست آزمایشی است.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+    <header>
+        <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
+        <nav>
+            <ul>
+                <li><a href="{{ site.baseurl }}/">Home</a></li>
+                <li><a href="{{ site.baseurl }}/about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% for post in site.posts %}
+            <article>
+                <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+                <p>{{ post.excerpt }}</p>
+                <a href="{{ post.url | relative_url }}">Read more</a>
+            </article>
+        {% endfor %}
+    </main>
+    <footer>
+        <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
+    </footer>
+</body>
+</html>
