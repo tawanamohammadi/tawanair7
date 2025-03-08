@@ -3,104 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وبلاگ تخصصی هوش مصنوعی و برنامه‌نویسی</title>
+    <title>توانا محمدی | هوش مصنوعی و برنامه‌نویسی</title>
     <link rel="stylesheet" href="style.css">
-    <!-- فونت وزیر برای متون فارسی -->
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
-    <nav class="navbar">
+    <div id="particles-js" class="particle-container"></div>
+    
+    <nav class="glass-nav">
         <div class="container">
-            <div class="logo">توانا محمدی</div>
-            <ul class="nav-links">
-                <li><a href="#home">خانه</a></li>
-                <li><a href="#blog">مقالات</a></li>
-                <li><a href="#projects">پروژه‌ها</a></li>
-                <li><a href="#about">درباره من</a></li>
-            </ul>
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="ai-icon"></div>
+                    <span>توانا محمدی</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="glass-button">خانه</a></li>
+                    <li><a href="#blog" class="glass-button">مقالات</a></li>
+                    <li><a href="#projects" class="glass-button">پروژه‌ها</a></li>
+                    <li><a href="#about" class="glass-button">درباره من</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <header class="hero">
         <div class="container">
-            <h1>دنیای هوش مصنوعی و برنامه‌نویسی</h1>
-            <p>آخرین مطالب و تجربیات در حوزه هوش مصنوعی و توسعه نرم‌افزار</p>
+            <div class="hero-content">
+                <h1 class="glitch" data-text="دنیای هوش مصنوعی">دنیای هوش مصنوعی</h1>
+                <p class="cyber-text">کاوش در مرزهای تکنولوژی و نوآوری</p>
+                <div class="ai-animation">
+                    <div class="neural-network"></div>
+                </div>
+            </div>
         </div>
     </header>
 
-    <main class="container">
-        <section class="featured-posts">
-            <h2>آخرین مقالات</h2>
-            <div class="post-grid">
-                <article class="post-card">
-                    <div class="post-image">
-                        <img src="https://via.placeholder.com/350x200" alt="AI Article">
-                    </div>
-                    <div class="post-content">
-                        <h3>مقدمه‌ای بر یادگیری عمیق</h3>
-                        <p>در این مقاله به بررسی مفاهیم پایه یادگیری عمیق و کاربردهای آن می‌پردازیم...</p>
-                        <div class="post-meta">
+    <main>
+        <section class="featured-section">
+            <div class="container">
+                <h2 class="section-title">آخرین مقالات</h2>
+                <div class="card-grid">
+                    <article class="cyber-card">
+                        <div class="card-hologram">
+                            <div class="hologram-content">
+                                <span class="tech-tag">Deep Learning</span>
+                                <h3>معماری ترانسفورمر در NLP</h3>
+                                <p>بررسی عمیق معماری‌های مدرن در پردازش زبان طبیعی...</p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
                             <span class="date">۱۷ اسفند ۱۴۰۳</span>
-                            <span class="read-time">۵ دقیقه مطالعه</span>
+                            <a href="#" class="read-more">بیشتر بخوانید</a>
                         </div>
-                    </div>
-                </article>
+                    </article>
 
-                <article class="post-card">
-                    <div class="post-image">
-                        <img src="https://via.placeholder.com/350x200" alt="Programming Article">
-                    </div>
-                    <div class="post-content">
-                        <h3>بهینه‌سازی کد در پایتون</h3>
-                        <p>تکنیک‌های پیشرفته برای بهبود عملکرد کد پایتون در پروژه‌های بزرگ...</p>
-                        <div class="post-meta">
-                            <span class="date">۱۵ اسفند ۱۴۰۳</span>
-                            <span class="read-time">۸ دقیقه مطالعه</span>
+                    <article class="cyber-card">
+                        <div class="card-hologram">
+                            <div class="hologram-content">
+                                <span class="tech-tag">Computer Vision</span>
+                                <h3>پیشرفت‌های YOLO در تشخیص اشیاء</h3>
+                                <p>آخرین پیشرفت‌ها در الگوریتم‌های تشخیص اشیاء...</p>
+                            </div>
                         </div>
-                    </div>
-                </article>
+                        <div class="card-footer">
+                            <span class="date">۱۵ اسفند ۱۴۰۳</span>
+                            <a href="#" class="read-more">بیشتر بخوانید</a>
+                        </div>
+                    </article>
+                </div>
             </div>
         </section>
 
-        <section class="projects">
-            <h2>پروژه‌های اخیر</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3>پروژه تشخیص چهره</h3>
-                    <p>پیاده‌سازی سیستم تشخیص چهره با استفاده از یادگیری عمیق</p>
-                    <div class="tech-stack">
-                        <span>Python</span>
-                        <span>TensorFlow</span>
-                        <span>OpenCV</span>
+        <section class="projects-section">
+            <div class="container">
+                <h2 class="section-title">پروژه‌های برجسته</h2>
+                <div class="project-showcase">
+                    <div class="project-card glow-effect">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <svg viewBox="0 0 24 24" class="ai-icon"><!-- SVG path here --></svg>
+                            </div>
+                            <h3>سیستم تشخیص چهره هوشمند</h3>
+                        </div>
+                        <div class="project-body">
+                            <div class="tech-stack">
+                                <span class="tech-pill">TensorFlow</span>
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">OpenCV</span>
+                            </div>
+                            <p>پیاده‌سازی یک سیستم تشخیص چهره پیشرفته با دقت بالا</p>
+                        </div>
+                        <a href="#" class="project-link">مشاهده در گیت‌هاب</a>
                     </div>
-                    <a href="#" class="project-link">مشاهده در گیت‌هاب</a>
-                </div>
-                
-                <div class="project-card">
-                    <h3>وب اپلیکیشن هوشمند</h3>
-                    <p>توسعه یک وب اپلیکیشن با قابلیت‌های هوش مصنوعی</p>
-                    <div class="tech-stack">
-                        <span>React</span>
-                        <span>Node.js</span>
-                        <span>MongoDB</span>
-                    </div>
-                    <a href="#" class="project-link">مشاهده در گیت‌هاب</a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="cyber-footer">
         <div class="container">
             <div class="footer-content">
                 <div class="social-links">
-                    <a href="https://github.com/tawanamohammadi" target="_blank">GitHub</a>
-                    <a href="#" target="_blank">LinkedIn</a>
-                    <a href="#" target="_blank">Twitter</a>
+                    <a href="https://github.com/tawanamohammadi" class="social-icon github" target="_blank">
+                        <span class="icon-hover">GitHub</span>
+                    </a>
+                    <a href="#" class="social-icon linkedin" target="_blank">
+                        <span class="icon-hover">LinkedIn</span>
+                    </a>
+                    <a href="#" class="social-icon twitter" target="_blank">
+                        <span class="icon-hover">Twitter</span>
+                    </a>
                 </div>
-                <p class="copyright">© ۱۴۰۳ توانا محمدی. تمامی حقوق محفوظ است.</p>
+                <div class="footer-text">
+                    <p>ساخته شده با 💻 و هوش مصنوعی</p>
+                </div>
             </div>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
